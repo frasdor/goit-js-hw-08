@@ -26,6 +26,8 @@ body {
     width: calc(100% - 48px) /3;
     height: 200px;
     overflow: hidden;
+    display: inline-block;
+    margin: 5px;
 }
   
 .gallery-link {
@@ -39,14 +41,22 @@ body {
     width: 360px; 
     height: 200px; 
     object-fit: cover; 
-   
+    transition: transform 250ms ease-out;
+    max-width: 100%;
 }
   
   .gallery-image:hover {
+    flex-grow: 3;
     width: 376px; 
     height: 208px; 
-    /* transform: translate(-8px, -4px); Przesunięcie obrazu aby zachować środek */
+    transform: scale(1.05);
+    transform-origin: center;
+   /* transform: translate(-8px, -4px); Przesunięcie obrazu aby zachować środek */
     cursor: url('./icons.svg'), auto; /* Ustawienie własnego kursora */
 }
 
-
+.gallery:after {
+  content:"";
+  display: table;
+  clear: both;
+}

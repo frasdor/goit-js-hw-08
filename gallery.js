@@ -65,6 +65,7 @@ const images = [
     ];
     
     const gallery = document.querySelector(".gallery");
+    let currentModal = null;
 
     const galleryItems = images.map(image => {
         const li = document.createElement('li');
@@ -95,12 +96,21 @@ gallery.addEventListener('click', (event) => {
   event.preventDefault();
   if (event.target.tagName === 'IMG') {
     const openedModal =  event.target.dataset.source;
-    const instance = basicLightbox.create(`
+
+    if (currentModal){
+      currentModal.close();
+    }
+    currentModal = basicLightbox.create(`
       <img src="${openedModal}" width="1112" height="640">
     `);
-    instance.show();
+    currentModal.show();
   }
 });
 
-
+document.addEventListener('keydown', (event)=> {
+  if(event.key === 'Escape' && currentModal){
+    currentModal.close();
+    currentModal = null;
+  }
+});
 
