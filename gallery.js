@@ -65,12 +65,15 @@ const images = [
     ];
     
     const gallery = document.querySelector(".gallery");
+
     const galleryItems = images.map(image => {
         const li = document.createElement('li');
         li.classList.add('galery-item');
+
         const link = document.createElement('a');
         link.classList.add('gallery-link');
         link.href = image.original;
+
         const img = document.createElement('img');
         img.classList.add('gallery-image');
         img.src = image.preview;
@@ -91,7 +94,11 @@ gallery.append(...galleryItems);
 gallery.addEventListener('click', (event) => {
   event.preventDefault();
   if (event.target.tagName === 'IMG') {
-    console.log('Clicked on image: ', event.target.dataset.source);
+    const openedModal =  event.target.dataset.source;
+    const instance = basicLightbox.create(`
+      <img src="${openedModal}" width="1112" height="640">
+    `);
+    instance.show();
   }
 });
 
