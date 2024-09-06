@@ -81,14 +81,14 @@ const images = [
         img.setAttribute('data-source', image.original);
         img.alt = image.description;
 
-        // Dodaj img do linku, a link do elementu li
+        
   link.appendChild(img);
   li.appendChild(link);
 
   return li;
 });
 
-// Dodaj wszystkie elementy li do ul.gallery
+// Dodawanie wszystkich elementow li do ul.gallery
 gallery.append(...galleryItems);
 
 // Blokowanie domyślnego zachowania linku (np. pobierania obrazu)
